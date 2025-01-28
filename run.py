@@ -13,10 +13,9 @@ app = create_app()
 
 @app.cli.command('create-admin')
 @click.option('--username', prompt='Enter admin username', help='Admin username')
-@click.option('--email', prompt='Enter admin email', help='Admin email')
 @click.option('--password', prompt='Enter admin password', hide_input=True, confirmation_prompt=True, help='Admin password')
 @with_appcontext
-def create_admin_command(username, email, password):
+def create_admin_command(username, password):
     """Create a new admin user."""
     # Check if user already exists
     existing_user = User.query.filter_by(username=username).first()
@@ -26,8 +25,7 @@ def create_admin_command(username, email, password):
 
     # Create new admin user
     admin = User(
-        username=username, 
-        email=email,
+        username=username,
         is_admin=True
     )
     admin.set_password(password)
