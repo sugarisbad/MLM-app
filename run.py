@@ -1,3 +1,4 @@
+import sys
 import os
 import click
 from app import create_app, db
@@ -30,7 +31,7 @@ def create_admin_command(username, email, password):
         is_admin=True
     )
     admin.set_password(password)
-
+    
     try:
         db.session.add(admin)
         db.session.commit()
@@ -39,4 +40,6 @@ def create_admin_command(username, email, password):
         db.session.rollback()
         click.echo(f'Error creating admin user: {str(e)}')
 
-# No need to run the app directly here when using Flask CLI
+if __name__ == '__main__':
+    # Ensure the app runs in debug mode for development
+    app.run(debug=True, host='0.0.0.0', port=5000)
