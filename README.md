@@ -157,7 +157,7 @@ Consider setting up CI/CD pipelines using:
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/sugarisbad/MLM-app
 cd MLM-app
 ```
 
