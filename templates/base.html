@@ -1,0 +1,50 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="{{ session.get('language', 'ru') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('MLM Система') }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="{{ _('Многоуровневая маркетинговая система') }}">
+    <!-- CSRF token meta tag removed -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}">
+</head>
+<body>
+    <header>
+        <nav aria-label="{{ _('Основная навигация') }}">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">{{ _('MLM Система') }}</a>
+                <div class="nav-links">
+                    <a href="/">{{ _('Главная') }}</a>
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.is_admin %}
+                            <a href="{{ url_for('main.dashboard') }}">{{ _('Панель администратора') }}</a>
+                        {% else %}
+                            <a href="{{ url_for('main.user_dashboard') }}">{{ _('Мой кабинет') }}</a>
+                        {% endif %}
+                        <a href="/structure">{{ _('Моя структура') }}</a>
+                        <a href="/transactions">{{ _('Транзакции') }}</a>
+                        <a href="{{ url_for('auth.logout') }}" class="nav-logout">{{ _('Выход') }}</a>
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" class="nav-login">{{ _('Вход') }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; {{ current_year() }} {{ _('MLM Система. Все права защищены.') }}</p>
+        </div>
+    </footer>
+</body>
+</html>

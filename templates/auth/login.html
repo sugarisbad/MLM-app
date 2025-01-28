@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h1>Вход в систему</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('auth.login') }}" aria-labelledby="login-title">
+            <div class="form-group">
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" name="username" class="form-control" 
+                       required autocomplete="username" aria-required="true">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" class="form-control" 
+                       required autocomplete="current-password" aria-required="true">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Войти</button>
+            
+            <p class="link-text">
+                Нет аккаунта? <a href="{{ url_for('auth.register') }}" class="register-link">Зарегистрируйтесь здесь</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

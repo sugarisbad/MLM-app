@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container admin-create-admin">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>{{ _('Create Admin User') }}</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('admin_create_admin') }}">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">{{ _('Username') }}</label>
+                            <input type="text" class="form-control" id="username" name="username" required 
+                                   minlength="3" maxlength="80">
+                            <small class="form-text text-muted">
+                                {{ _('Username must be at least 3 characters long') }}
+                            </small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">{{ _('Password') }}</label>
+                            <input type="password" class="form-control" id="password" name="password" required 
+                                   minlength="12">
+                            <small class="form-text text-muted">
+                                {{ _('Password must be at least 12 characters long and include uppercase, lowercase, numbers, and special characters') }}
+                            </small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm_password" class="form-label">{{ _('Confirm Password') }}</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            {{ _('Create Admin User') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

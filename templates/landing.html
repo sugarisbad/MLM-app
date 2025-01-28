@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}Торговый Робот MLM Платформа{% endblock %}
+
+{% block content %}
+<div class="landing-page">
+    <div class="language-switcher">
+        <a href="{{ url_for('main.set_language', lang='ru') }}" class="lang-btn {% if current_language == 'ru' %}active{% endif %}">Русский</a>
+        <a href="{{ url_for('main.set_language', lang='en') }}" class="lang-btn {% if current_language == 'en' %}active{% endif %}">English</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>{{ _('Unlock Your Financial Potential') }}</h1>
+            <p>{{ _('Create a successful business with our multi-level marketing system') }}</p>
+            <div class="hero-cta">
+                <a href="{{ url_for('auth.register') }}" class="btn btn-primary">{{ _('Start Now') }}</a>
+                <a href="#how-it-works" class="btn btn-secondary">{{ _('Learn More') }}</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='images/network-illustration.svg') }}" alt="{{ _('MLM Network Illustration') }}">
+        </div>
+    </section>
+
+    <section class="trading-robot">
+        <div class="container">
+            <h2>{{ _('🤖 Passive Income Trading Robot') }}</h2>
+            <div class="trading-robot-content">
+                <div class="trading-robot-description">
+                    <h3>{{ _('🚀 Automated Trading Solution') }}</h3>
+                    <p>{{ _('Our advanced trading robot harnesses cutting-edge AI to generate consistent passive income. Discover our revolutionary features:') }}</p>
+                    <div class="trading-robot-features">
+                        <div class="feature-block">
+                            <div class="feature-icon">🧠</div>
+                            <div class="feature-text">
+                                <h4>{{ _('AI-Powered Strategies') }}</h4>
+                                <p>{{ _('Advanced machine learning algorithms adapt to market conditions') }}</p>
+                            </div>
+                        </div>
+                        <div class="feature-block">
+                            <div class="feature-icon">⏰</div>
+                            <div class="feature-text">
+                                <h4>{{ _('24/7 Market Monitoring') }}</h4>
+                                <p>{{ _('Continuous trading across global markets') }}</p>
+                            </div>
+                        </div>
+                        <div class="feature-block">
+                            <div class="feature-icon">🛡️</div>
+                            <div class="feature-text">
+                                <h4>{{ _('Smart Risk Management') }}</h4>
+                                <p>{{ _('Intelligent algorithms minimize potential losses') }}</p>
+                            </div>
+                        </div>
+                        <div class="feature-block">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-text">
+                                <h4>{{ _('Transparent Performance') }}</h4>
+                                <p>{{ _('Real-time tracking and detailed analytics') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trading-robot-stats">
+                        <div class="stat">
+                            <span class="stat-value">{{ _('Up to {percent} Percent').format(percent=15) }} 💹</span>
+                            <span class="stat-label">{{ _('Monthly Returns') }}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">{{ _('Low Risk Strategy') }} 🔒</span>
+                            <span class="stat-label">{{ _('Investment Strategy') }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="trading-robot-image">
+                    <img src="{{ url_for('static', filename='images/trading-robot.svg') }}" alt="{{ _('Trading Robot Illustration') }}">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="features">
+        <div class="container">
+            <h2>{{ _('How It Works') }}</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">📝</div>
+                    <h3>{{ _('Registration') }}</h3>
+                    <p>{{ _('Create an account in just a few minutes and start your journey to financial independence') }}</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <h3>{{ _('Referral Program') }}</h3>
+                    <p>{{ _('Invite friends and earn bonuses up to 3 levels deep') }}</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h3>{{ _('Income') }}</h3>
+                    <p>{{ _('Earn from your team\'s sales and personal achievements') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2>{{ _('Benefits of the Platform') }}</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>{{ _('Transparency') }}</h3>
+                    <p>{{ _('Full control and visibility of your structure and transactions') }}</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>{{ _('Support') }}</h3>
+                    <p>{{ _('24/7 technical and consulting support') }}</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>{{ _('Security') }}</h3>
+                    <p>{{ _('Modern data and transaction protection protocols') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>{{ _('Ready to Start?') }}</h2>
+            <p>{{ _('Join our platform and transform your business') }}</p>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-large">{{ _('Sign Up') }}</a>
+        </div>
+    </section>
+</div>
+{% endblock %}

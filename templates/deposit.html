@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="auth-box">
+        <h2>{{ _('Deposit Funds') }}</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="amount">{{ _('Deposit Amount') }}</label>
+                <input type="number" name="amount" id="amount" class="form-control" 
+                       min="0.01" step="0.01" required placeholder="{{ _('Enter amount') }}">
+            </div>
+            <button type="submit" class="btn btn-primary">{{ _('Deposit') }}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

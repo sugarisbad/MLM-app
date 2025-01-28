@@ -1,0 +1,322 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-01-28 23:55+0300\n"
+"PO-Revision-Date: 2025-01-28 00:25+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: templates/base.html:7 templates/base.html:20
+msgid "MLM Система"
+msgstr ""
+
+#: templates/base.html:12
+msgid "Многоуровневая маркетинговая система"
+msgstr ""
+
+#: templates/base.html:18
+msgid "Основная навигация"
+msgstr ""
+
+#: templates/base.html:22
+msgid "Главная"
+msgstr ""
+
+#: templates/base.html:24
+msgid "Мой кабинет"
+msgstr ""
+
+#: templates/base.html:25
+msgid "Моя структура"
+msgstr ""
+
+#: templates/base.html:26
+msgid "Транзакции"
+msgstr ""
+
+#: templates/base.html:27
+msgid "Выход"
+msgstr ""
+
+#: templates/base.html:29
+msgid "Вход"
+msgstr ""
+
+#: templates/base.html:42
+msgid "MLM Система. Все права защищены."
+msgstr ""
+
+#: templates/landing.html:14
+msgid "Unlock Your Financial Potential"
+msgstr "Раскройте свой финансовый потенциал"
+
+#: templates/landing.html:15
+msgid "Create a successful business with our multi-level marketing system"
+msgstr "Создайте успешный бизнес с нашей многоуровневой маркетинговой системой"
+
+#: templates/landing.html:17
+msgid "Start Now"
+msgstr "Начать сейчас"
+
+#: templates/landing.html:18
+msgid "Learn More"
+msgstr "Узнать больше"
+
+#: templates/landing.html:22
+msgid "MLM Network Illustration"
+msgstr "Иллюстрация MLM-сети"
+
+#: templates/landing.html:28
+msgid "🤖 Passive Income Trading Robot"
+msgstr "🤖 Торговый Робот Пассивного Дохода"
+
+#: templates/landing.html:31
+msgid "🚀 Automated Trading Solution"
+msgstr "🚀 Автоматизированное Торговое Решение"
+
+#: templates/landing.html:32
+msgid ""
+"Our advanced trading robot harnesses cutting-edge AI to generate "
+"consistent passive income. Discover our revolutionary features:"
+msgstr ""
+"Наш передовой торговый робот использует современный ИИ для генерации "
+"стабильного пассивного дохода. Откройте для себя наши революционные "
+"возможности:"
+
+#: templates/landing.html:37
+msgid "AI-Powered Strategies"
+msgstr "Стратегии на основе ИИ"
+
+#: templates/landing.html:38
+msgid "Advanced machine learning algorithms adapt to market conditions"
+msgstr "Передовые алгоритмы машинного обучения адаптируются к рыночным условиям"
+
+#: templates/landing.html:44
+msgid "24/7 Market Monitoring"
+msgstr "Круглосуточный мониторинг рынка"
+
+#: templates/landing.html:45
+msgid "Continuous trading across global markets"
+msgstr "Непрерывная торговля на глобальных рынках"
+
+#: templates/landing.html:51
+msgid "Smart Risk Management"
+msgstr "Умное Управление Рисками"
+
+#: templates/landing.html:52
+msgid "Intelligent algorithms minimize potential losses"
+msgstr "Интеллектуальные алгоритмы минимизируют потенциальные убытки"
+
+#: templates/landing.html:58
+msgid "Transparent Performance"
+msgstr "Прозрачная Эффективность"
+
+#: templates/landing.html:59
+msgid "Real-time tracking and detailed analytics"
+msgstr "Отслеживание в реальном времени и подробная аналитика"
+
+#: templates/landing.html:65
+msgid "Up to 15%"
+msgstr ""
+
+#: templates/landing.html:66
+msgid "Monthly Returns"
+msgstr "Ежемесячный Доход"
+
+#: templates/landing.html:69
+msgid "Low Risk"
+msgstr ""
+
+#: templates/landing.html:70
+msgid "Investment Strategy"
+msgstr "Инвестиционная Стратегия"
+
+#: templates/landing.html:75
+msgid "Trading Robot Illustration"
+msgstr "Иллюстрация Торгового Робота"
+
+#: templates/landing.html:83
+msgid "How It Works"
+msgstr "Как Это Работает"
+
+#: templates/landing.html:87
+msgid "Registration"
+msgstr "Регистрация"
+
+#: templates/landing.html:88
+msgid ""
+"Create an account in just a few minutes and start your journey to "
+"financial independence"
+msgstr ""
+"Создайте аккаунт всего за несколько минут и начните свой путь к "
+"финансовой независимости"
+
+#: templates/landing.html:92
+msgid "Referral Program"
+msgstr "Реферальная Программа"
+
+#: templates/landing.html:93
+msgid "Invite friends and earn bonuses up to 3 levels deep"
+msgstr "Приглашайте друзей и зарабатывайте бонусы до 3 уровней"
+
+#: templates/landing.html:97
+msgid "Income"
+msgstr "Доход"
+
+#: templates/landing.html:98
+msgid "Earn from your team's sales and personal achievements"
+msgstr "Зарабатывайте от продаж вашей команды и личных достижений"
+
+#: templates/landing.html:106
+msgid "Benefits of the Platform"
+msgstr "Преимущества Платформы"
+
+#: templates/landing.html:109
+msgid "Transparency"
+msgstr "Прозрачность"
+
+#: templates/landing.html:110
+msgid "Full control and visibility of your structure and transactions"
+msgstr "Полный контроль и видимость вашей структуры и транзакций"
+
+#: templates/landing.html:113
+msgid "Support"
+msgstr "Поддержка"
+
+#: templates/landing.html:114
+msgid "24/7 technical and consulting support"
+msgstr "Техническая и консультационная поддержка 24/7"
+
+#: templates/landing.html:117
+msgid "Security"
+msgstr "Безопасность"
+
+#: templates/landing.html:118
+msgid "Modern data and transaction protection protocols"
+msgstr "Современные протоколы защиты данных и транзакций"
+
+#: templates/landing.html:126
+msgid "Ready to Start?"
+msgstr "Готовы начать?"
+
+#: templates/landing.html:127
+msgid "Join our platform and transform your business"
+msgstr "Присоединяйтесь к нашей платформе и трансформируйте свой бизнес"
+
+#: templates/landing.html:128
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+#: templates/admin/create_admin.html:9 templates/admin/create_admin.html:34
+#: templates/admin/dashboard.html:33
+msgid "Create Admin User"
+msgstr "Создать администратора"
+
+#: templates/admin/create_admin.html:14
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: templates/admin/create_admin.html:18
+msgid "Username must be at least 3 characters long"
+msgstr "Имя пользователя должно быть не менее 3 символов"
+
+#: templates/admin/create_admin.html:22
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/admin/create_admin.html:26
+msgid ""
+"Password must be at least 12 characters long and include uppercase, "
+"lowercase, numbers, and special characters"
+msgstr ""
+"Пароль должен быть не менее 12 символов и содержать заглавные и строчные "
+"буквы, цифры и специальные символы"
+
+#: templates/admin/create_admin.html:30
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+#: templates/admin/dashboard.html:28
+msgid "Manage Referral Settings"
+msgstr "Управление реферальными настройками"
+
+#: templates/admin/referral_settings.html:5
+msgid "Referral Bonus Settings"
+msgstr "Настройки реферальных бонусов"
+
+#: templates/admin/referral_settings.html:13
+#, python-format
+msgid "Level %(level)d Referral Bonus"
+msgstr "Бонус реферала уровня %(level)d"
+
+#: templates/admin/referral_settings.html:27
+msgid "Percentage of transaction amount awarded to referrer at this level"
+msgstr "Процент суммы транзакции, начисляемый рефереру на этом уровне"
+
+#: templates/admin/referral_settings.html:35
+msgid "Save Referral Settings"
+msgstr "Сохранить реферальные настройки"
+
+#~ msgid "Current password is incorrect"
+#~ msgstr "Текущий пароль введен неверно"
+
+#~ msgid "Password changed successfully"
+#~ msgstr "Пароль успешно изменен"
+
+#~ msgid "Invalid username or password"
+#~ msgstr "Неверное имя пользователя или пароль"
+
+#~ msgid "Username already exists"
+#~ msgstr "Имя пользователя уже занято"
+
+#~ msgid "Registration successful. Please log in."
+#~ msgstr "Регистрация прошла успешно. Пожалуйста, войдите в систему."
+
+#~ msgid "You have been logged out"
+#~ msgstr "Вы вышли из системы"
+
+#~ msgid "Referral settings updated successfully"
+#~ msgstr "Настройки реферальной программы успешно обновлены"
+
+#~ msgid "Error updating referral settings: {}"
+#~ msgstr "Ошибка при обновлении реферальных настроек: {}"
+
+#~ msgid "Invalid CSRF token. Please try again."
+#~ msgstr "Недействительный CSRF-токен. Пожалуйста, попробуйте снова."
+
+#~ msgid "All fields are required"
+#~ msgstr "Все поля обязательны для заполнения"
+
+#~ msgid "Passwords do not match"
+#~ msgstr "Пароли не совпадают"
+
+#~ msgid "Admin user created successfully"
+#~ msgstr "Администратор успешно создан"
+
+#~ msgid "Failed to create admin user. Check logs for details."
+#~ msgstr ""
+#~ "Не удалось создать администратора. Проверьте"
+#~ " журнал для получения подробностей."
+
+#~ msgid "Database connection failed"
+#~ msgstr "Не удалось подключиться к базе данных"
+
+#~ msgid "💹 Up to 15%"
+#~ msgstr "💹 До 15%"
+
+#~ msgid "🔒 Low Risk"
+#~ msgstr "🔒 Низкий Риск"
+

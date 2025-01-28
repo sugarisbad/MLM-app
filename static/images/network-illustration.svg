@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <style>
+    .node { fill: #4a90e2; }
+    .connection { stroke: #4a90e2; stroke-width: 3; }
+  </style>
+  
+  <!-- Network Nodes -->
+  <circle cx="300" cy="200" r="30" class="node"/>
+  <circle cx="200" cy="100" r="20" class="node"/>
+  <circle cx="400" cy="100" r="20" class="node"/>
+  <circle cx="150" cy="250" r="15" class="node"/>
+  <circle cx="250" cy="300" r="15" class="node"/>
+  <circle cx="450" cy="250" r="15" class="node"/>
+  
+  <!-- Connections -->
+  <line x1="300" y1="200" x2="200" y2="100" class="connection"/>
+  <line x1="300" y1="200" x2="400" y2="100" class="connection"/>
+  <line x1="200" y1="100" x2="150" y2="250" class="connection"/>
+  <line x1="200" y1="100" x2="250" y2="300" class="connection"/>
+  <line x1="400" y1="100" x2="450" y2="250" class="connection"/>
+</svg>

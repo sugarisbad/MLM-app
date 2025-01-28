@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-box">
+    <h2>Регистрация</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST" action="{{ url_for('auth.register') }}">
+        <div class="form-group">
+            <label>Имя пользователя</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label>Пароль</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label>ID пригласившего (необязательно)</label>
+            <input type="number" name="referrer_id" class="form-control">
+            <small class="text-muted">Оставьте пустым, если вас никто не пригласил</small>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        
+        <p class="link-text">
+            Уже есть аккаунт? <a href="{{ url_for('auth.login') }}">Войдите здесь</a>
+        </p>
+    </form>
+</div>
+{% endblock %}

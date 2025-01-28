@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добро пожаловать, {{ user.username }}!</h1>
+<p>Ваш баланс: ${{ user.balance }}</p>
+<p>Ваша реферальная ссылка: http://ваш-сайт/register?referrer_id={{ user.id }}</p>
+{% endblock %}

@@ -1,0 +1,70 @@
+<!-- templates/admin/dashboard.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Admin Dashboard</h2>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total Users</h3>
+            <p>{{ stats.total_users }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Balance</h3>
+            <p>${{ "%.2f"|format(stats.total_balance) }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Today's Registrations</h3>
+            <p>{{ stats.today_registrations }}</p>
+        </div>
+    </div>
+
+    <div class="admin-actions mt-4">
+        <h3>Admin Actions</h3>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <a href="{{ url_for('admin.referral_settings') }}" class="btn btn-secondary w-100">
+                    <i class="fas fa-percentage"></i> {{ _('Manage Referral Settings') }}
+                </a>
+            </div>
+            <div class="col-md-4 mb-3">
+                <a href="{{ url_for('admin.create_admin') }}" class="btn btn-danger w-100">
+                    <i class="fas fa-user-plus"></i> {{ _('Create Admin User') }}
+                </a>
+            </div>
+            <!-- You can add more admin action buttons here in the future -->
+        </div>
+    </div>
+
+    <h3>All Users</h3>
+    <table class="users-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Balance</th>
+                <th>Referrer</th>
+                <th>Joined</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td><a href="{{ url_for('admin_user_detail', user_id=user.id) }}">{{ user.username }}</a></td>
+                <td>${{ "%.2f"|format(user.balance) }}</td>
+                <td>
+                    {% if user.referrer %}
+                        {{ user.referrer.username }} (ID: {{ user.referrer.id }})
+                    {% else %}
+                        None
+                    {% endif %}
+                </td>
+                <td>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

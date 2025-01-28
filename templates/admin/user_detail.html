@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container admin-user-detail">
+    <h2>Детали пользователя: {{ user.username }}</h2>
+    
+    <div class="user-info">
+        <h3>Информация о пользователе</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Имя пользователя</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Баланс</th>
+                <td>${{ "%.2f"|format(user.balance) }}</td>
+            </tr>
+            <tr>
+                <th>Дата регистрации</th>
+                <td>{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            <tr>
+                <th>Приглашен</th>
+                <td>
+                    {% if user.referrer %}
+                        {{ user.referrer.username }} (ID: {{ user.referrer.id }})
+                    {% else %}
+                        Нет
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="user-transactions">
+        <h3>Транзакции</h3>
+        {% if transactions %}
+            <table class="transactions-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Сумма</th>
+                        <th>Описание</th>
+                        <th>Дата</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.id }}</td>
+                        <td>${{ "%.2f"|format(transaction.amount) }}</td>
+                        <td>{{ transaction.description }}</td>
+                        <td>{{ transaction.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Нет транзакций</p>
+        {% endif %}
+    </div>
+
+    <div class="user-referrals">
+        <h3>Реферальные пользователи</h3>
+        {% if referrals %}
+            <table class="referrals-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Имя пользователя</th>
+                        <th>Баланс</th>
+                        <th>Дата регистрации</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for referral in referrals %}
+                    <tr>
+                        <td>{{ referral.id }}</td>
+                        <td><a href="{{ url_for('admin_user_detail', user_id=referral.id) }}">{{ referral.username }}</a></td>
+                        <td>${{ "%.2f"|format(referral.balance) }}</td>
+                        <td>{{ referral.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Нет реферальных пользователей</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

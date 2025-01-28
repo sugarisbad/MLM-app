@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container user-dashboard">
+    <div class="dashboard-header">
+        <h2>{{ _('User Dashboard') }}</h2>
+        <div class="dashboard-header-actions">
+            <div class="user-greeting">
+                <span class="user-greeting-text">{{ _('Welcome') }}, {{ user.username }}!</span>
+            </div>
+            <div class="header-quick-actions">
+                <a href="{{ url_for('main.deposit') }}" class="btn btn-primary btn-sm">{{ _('Deposit') }}</a>
+                <a href="{{ url_for('main.withdraw') }}" class="btn btn-secondary btn-sm">{{ _('Withdraw') }}</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="dashboard-grid">
+        <div class="dashboard-card user-info-card">
+            <div class="card-header">
+                <h3>{{ _('Account Overview') }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="balance-section">
+                    <div class="balance-details">
+                        <span class="balance-label">{{ _('Current Balance') }}:</span>
+                        <span class="balance-amount">${{ "%.2f"|format(user.balance) }}</span>
+                    </div>
+                    <div class="balance-trend">
+                        <span class="trend-label">{{ _('Monthly Change') }}:</span>
+                        <span class="trend-value {{ 'text-success' if monthly_balance_change >= 0 else 'text-danger' }}">
+                            {{ "+" if monthly_balance_change >= 0 }}${{ "%.2f"|format(monthly_balance_change) }}
+                        </span>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <a href="{{ url_for('main.transactions') }}" class="btn btn-outline-primary">{{ _('View All Transactions') }}</a>
+                    <a href="{{ url_for('main.user_structure') }}" class="btn btn-outline-secondary">{{ _('Referral Network') }}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-card referral-card">
+            <div class="card-header">
+                <h3>{{ _('Referral Program') }}</h3>
+                <span class="referral-stats">{{ referral_count }} {{ _('Referrals') }}</span>
+            </div>
+            <div class="card-body">
+                <p>{{ _('Share your unique referral link and earn bonuses') }}:</p>
+                <div class="referral-link-container">
+                    <input type="text" value="{{ referral_link }}" readonly class="form-control referral-link" id="referralLinkInput">
+                    <button class="btn btn-copy" onclick="copyToClipboard('referralLinkInput')">
+                        <i class="fas fa-copy"></i> {{ _('Copy') }}
+                    </button>
+                </div>
+                <div class="referral-bonus-info">
+                    <small class="text-muted">
+                        {{ _('Earn') }} ${{ "%.2f"|format(referral_bonus_per_signup) }} {{ _('per successful referral') }}
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="dashboard-card recent-transactions">
+        <div class="card-header">
+            <h3>{{ _('Recent Transactions') }}</h3>
+            <a href="{{ url_for('main.transactions') }}" class="btn btn-sm btn-outline-primary">{{ _('View All') }}</a>
+        </div>
+        <div class="card-body">
+            {% if recent_transactions %}
+                <div class="transactions-list">
+                    {% for transaction in recent_transactions %}
+                    <div class="transaction-item">
+                        <div class="transaction-details">
+                            <span class="transaction-date">{{ transaction.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                            <span class="transaction-description">{{ transaction.description }}</span>
+                        </div>
+                        <div class="transaction-amount {{ 'text-success' if transaction.amount >= 0 else 'text-danger' }}">
+                            ${{ "%.2f"|format(transaction.amount) }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-transactions">{{ _('No recent transactions') }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToClipboard(elementId) {
+    // Select the input element
+    const inputElement = document.getElementById(elementId);
+    
+    // Create a temporary textarea to handle copying
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = inputElement.value;
+    
+    // Make the textarea out of viewport
+    tempTextArea.style.position = 'fixed';
+    tempTextArea.style.left = '-9999px';
+    document.body.appendChild(tempTextArea);
+    
+    // Select the text
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+    
+    try {
+        // Attempt to copy using modern Clipboard API
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(inputElement.value).then(() => {
+                showCopyFeedback(inputElement);
+            }).catch(err => {
+                console.error('Clipboard API copy failed:', err);
+                fallbackCopy(tempTextArea);
+            });
+        } else {
+            // Fallback for older browsers
+            fallbackCopy(tempTextArea);
+        }
+    } catch (err) {
+        console.error('Copy failed:', err);
+        alert('{{ _("Unable to copy. Please copy manually.") }}');
+    } finally {
+        // Clean up
+        document.body.removeChild(tempTextArea);
+    }
+}
+
+function fallbackCopy(textArea) {
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            const inputElement = document.getElementById('referralLinkInput');
+            showCopyFeedback(inputElement);
+        } else {
+            console.error('Fallback copy unsuccessful');
+            alert('{{ _("Unable to copy. Please copy manually.") }}');
+        }
+    } catch (err) {
+        console.error('Fallback copy error:', err);
+        alert('{{ _("Unable to copy. Please copy manually.") }}');
+    }
+}
+
+function showCopyFeedback(inputElement) {
+    const copyButton = inputElement.nextElementSibling;
+    const originalText = copyButton.innerHTML;
+    
+    copyButton.innerHTML = '<i class="fas fa-check text-success"></i> {{ _("Copied!") }}';
+    
+    setTimeout(() => {
+        copyButton.innerHTML = originalText;
+    }, 2000);
+}
+</script>
+{% endblock %}

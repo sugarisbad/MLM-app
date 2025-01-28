@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% macro render_structure(node) %}
+    {% if node %}
+    <div class="structure-node" style="margin-left: {{ node.level * 20 }}px" aria-label="Узел структуры">
+        <span class="node-details">
+            <strong>{{ node.user.username }}</strong> (Уровень {{ node.level }})
+            {% if node.user.referrer %}
+                <small>(Приглашен: {{ node.user.referrer.username }})</small>
+            {% endif %}
+        </span>
+        {% if node.referrals %}
+            <div class="referrals" aria-label="Реферальные связи">
+                {% for referral in node.referrals %}
+                    {{ render_structure(referral) }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+{% endmacro %}
+
+{% block content %}
+<div class="container">
+    <h2>Ваша Реферальная Структура</h2>
+    <section class="structure-container" aria-label="Реферальная структура">
+        {% if structure %}
+            {{ render_structure(structure) }}
+        {% else %}
+            <p class="no-structure-message">Реферальная структура не найдена.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
