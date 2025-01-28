@@ -1,18 +1,30 @@
 import os
+import sys
 import click
-from app import create_app
-from app.models import db, User
-from werkzeug.security import generate_password_hash
+from flask.cli import FlaskGroup
 
-# Create the Flask application
-app = create_app()
+# Ensure the app directory is in the Python path
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-@app.cli.command('create-admin')
+from app import create_app, db
+from app.models import User
+
+def create_flask_app():
+    """Create and return a Flask application instance."""
+    return create_app()
+
+@click.group(cls=FlaskGroup, create_app=create_flask_app)
+def cli():
+    """Management script for the Web application."""
+    pass
+
+@cli.command('create-admin')
 @click.option('--username', prompt='Enter admin username', help='Admin username')
 @click.option('--email', prompt='Enter admin email', help='Admin email')
 @click.option('--password', prompt='Enter admin password', hide_input=True, confirmation_prompt=True, help='Admin password')
 def create_admin_command(username, email, password):
     """Create a new admin user."""
+    app = create_app()
     with app.app_context():
         # Check if user already exists
         existing_user = User.query.filter_by(username=username).first()
@@ -37,5 +49,4 @@ def create_admin_command(username, email, password):
             click.echo(f'Error creating admin user: {str(e)}')
 
 if __name__ == '__main__':
-    # Ensure the app runs in debug mode for development
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    cli()
